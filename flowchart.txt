@@ -1,0 +1,22 @@
+graph TD
+    A[Start] --> B[Khởi tạo và reset các thanh ghi]
+    B --> C{Ghi dữ liệu vào các thanh ghi}
+    C --> |PADD == 2'b00| C1[Write TDR]
+    C --> |PADD == 2'b01| C2[Write TCR]
+    C --> |PADD == 2'b10| C3[Write TSR]
+    C1 --> D{Đọc dữ liệu từ các thanh ghi}
+    C2 --> D
+    C3 --> D
+    D --> |PWRITE == 0 & PADD == 2'b00| D1[Read TDR]
+    D --> |PWRITE == 0 & PADD == 2'b01| D2[Read TCR]
+    D --> |PWRITE == 0 & PADD == 2'b10| D3[Read TSR]
+    D --> E[Chọn tín hiệu select_clk từ internal_clk]
+    E --> F[Cập nhật reg_TCNT mỗi xung clock ]
+    F --> G[Phát hiện trạng thái tràn hw_ovf hoặc thiếu hw_udf]
+    G --> |load == 1| F1[Cập nhật giá trị reg_TCNT từ TDR]
+    G --> |enable == 1 & load == 0 & up_dw == 1| F2[reg_TCNT Đếm xuống]
+    G --> |enable == 1 & load == 0 & up_dw == 0| F3[reg_TCNT Đếm lên]
+    
+    
+  
+    

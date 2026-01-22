@@ -1,0 +1,17 @@
+restart -f
+
+cd D:/tkvm/timer
+
+
+
+vlog -cover bcsxf Timer8Bit.v
+
+vlog -cover bcs Timer8Bit.v
+vsim -coverage -voptargs=\"+acc\" testbench 
+vlog -reportprogress 300 -work work D:/tkvm/timer/Timer8Bit.v
+add wave sim:/testbench/UT/*
+
+run 2500
+
+#vsim -voptargs="+acc" testbench 
+vsim -debugdb work.Timer_8bit

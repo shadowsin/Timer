@@ -1,0 +1,13 @@
+Coverage Report Summary Data by file
+
+File: Timer8Bit.v
+    Enabled Coverage            Active      Hits    Misses % Covered
+    ----------------            ------      ----    ------ ---------
+    Stmts                          217       217         0     100.0
+    Branches                        32        32         0     100.0
+    FEC Condition Terms             14        14         0     100.0
+    FEC Expression Terms            20        20         0     100.0
+
+
+Total Coverage By File (code coverage only, filtered view): 100.0%
+
